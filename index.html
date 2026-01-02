@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohit Pandey - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #fafafa;
+            color: #1a1a1a;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Organic blob background */
+        .blob-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: morph 20s ease-in-out infinite;
+        }
+
+        .blob1 {
+            background: #ff6b6b;
+            width: 500px;
+            height: 500px;
+            top: -200px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .blob2 {
+            background: #4ecdc4;
+            width: 400px;
+            height: 400px;
+            bottom: -150px;
+            right: -100px;
+            animation-delay: 5s;
+        }
+
+        .blob3 {
+            background: #ffe66d;
+            width: 450px;
+            height: 450px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 10s;
+        }
+
+        @keyframes morph {
+            0%, 100% {
+                border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
+                transform: translate(50px, 50px) rotate(90deg);
+            }
+            50% {
+                border-radius: 30% 70% 60% 40% / 60% 30% 70% 40%;
+                transform: translate(-30px, 80px) rotate(180deg);
+            }
+            75% {
+                border-radius: 70% 30% 40% 60% / 40% 70% 30% 60%;
+                transform: translate(80px, -50px) rotate(270deg);
+            }
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        /* Minimalist Header */
+        header {
+            text-align: left;
+            margin-bottom: 100px;
+            padding: 40px 0;
+        }
+
+        .name-wrapper {
+            display: inline-block;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: -2px;
+            line-height: 1;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .name-underline {
+            height: 8px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #ffe66d);
+            border-radius: 10px;
+            margin-top: 10px;
+            animation: expand 1.5s ease-out;
+        }
+
+        @keyframes expand {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #666;
+            text-transform: none;
+            letter-spacing: 1px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Category Sections - Brutalist Style */
+        .category {
+            margin-bottom: 120px;
+        }
+
+        .category-header {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding: 15px 30px;
+            background: #1a1a1a;
+            color: #fff;
+            border-radius: 0;
+            transform: skew(-2deg);
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.1);
+        }
+
+        .badge {
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 0;
+            border: 3px solid;
+            font-family: 'JetBrains Mono', monospace;
+            transform: skew(2deg);
+        }
+
+        .js-group .badge {
+            background: #fff;
+            color: #ff6b6b;
+            border-color: #ff6b6b;
+        }
+
+        .css-group .badge {
+            background: #fff;
+            color: #4ecdc4;
+            border-color: #4ecdc4;
+        }
+
+        .html-group .badge {
+            background: #fff;
+            color: #ffe66d;
+            border-color: #ffe66d;
+        }
+
+        .cat-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            transform: skew(2deg);
+        }
+
+        /* Card Grid - Masonry Style */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        /* Neo-brutalist Cards */
+        .card {
+            background: #fff;
+            border: 4px solid #1a1a1a;
+            border-radius: 0;
+            padding: 35px 25px;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 6px 6px 0 rgba(0,0,0,1);
+        }
+
+        .card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0 rgba(0,0,0,1);
+        }
+
+        .js-group .card {
+            border-color: #ff6b6b;
+        }
+
+        .css-group .card {
+            border-color: #4ecdc4;
+        }
+
+        .html-group .card {
+            border-color: #ffe66d;
+        }
+
+        .card-number {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #1a1a1a;
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 5px 15px;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 1px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: left;
+            color: #1a1a1a;
+        }
+
+        .card-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Unique Buttons */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.2s ease;
+            border: 3px solid;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(0,0,0,0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .btn-output {
+            background: #1a1a1a;
+            color: #fff;
+            border-color: #1a1a1a;
+        }
+
+        .btn-output:hover {
+            background: #fff;
+            color: #1a1a1a;
+        }
+
+        .js-group .btn-output:hover {
+            color: #ff6b6b;
+            border-color: #ff6b6b;
+        }
+
+        .css-group .btn-output:hover {
+            color: #4ecdc4;
+            border-color: #4ecdc4;
+        }
+
+        .html-group .btn-output:hover {
+            color: #ffe66d;
+            border-color: #ffe66d;
+        }
+
+        .btn-github {
+            background: transparent;
+            color: #1a1a1a;
+            border-color: #1a1a1a;
+        }
+
+        .btn-github:hover {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        /* Arrow icons for buttons */
+        .btn-output::after {
+            content: '→';
+            transition: transform 0.3s;
+        }
+
+        .btn-output:hover::after {
+            transform: translateX(5px);
+        }
+
+        .btn-github::after {
+            content: '⤴';
+            transition: transform 0.3s;
+        }
+
+        .btn-github:hover::after {
+            transform: rotate(45deg);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 100px;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #666;
+            border-top: 3px solid #1a1a1a;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .card-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+            .category-header { 
+                flex-direction: column; 
+                text-align: center;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.5rem; }
+            .card-grid { grid-template-columns: 1fr; }
+            .container { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blob-bg">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="name-wrapper">
+                <h1>Mohit Pandey</h1>
+                <div class="name-underline"></div>
+            </div>
+            <h2>// webtech_practical.html</h2>
+        </header>
+
+        <script>
+            const githubLinks = [
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question1.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question2.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question3.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question4.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question5.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question6.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question7.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question8.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question9.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question10.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question11.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question12.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question13.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question14.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question15.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question16.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question17.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question18.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question19.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question20.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question21.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question22.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question23.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question24.html",
+                "https://github.com/khushbirsinghdhunna/Webtech_final_assesment/blob/main/question25.html"
+            ];
+        </script>
+
+        <div class="category js-group">
+            <div class="category-header">
+                <span class="badge">JS</span>
+                <span class="cat-title">Logic & Functionality (1-15)</span>
+            </div>
+            <div class="card-grid">
+                <script>
+                    for(let i=1; i<=15; i++) {
+                        document.write(`
+                        <div class="card">
+                            <div class="card-number">#${i.toString().padStart(2, '0')}</div>
+                            <div class="card-title">Question ${i}</div>
+                            <div class="card-actions">
+                                <a href="question${i}.html" class="btn btn-output">Live View</a>
+                                <a href="${githubLinks[i-1]}" target="_blank" class="btn btn-github">Source Code</a>
+                            </div>
+                        </div>
+                        `);
+                    }
+                </script>
+            </div>
+        </div>
+
+        <div class="category css-group">
+            <div class="category-header">
+                <span class="badge">CSS</span>
+                <span class="cat-title">Styling & Layout (16-20)</span>
+            </div>
+            <div class="card-grid">
+                <script>
+                    for(let i=16; i<=20; i++) {
+                        document.write(`
+                        <div class="card">
+                            <div class="card-number">#${i.toString().padStart(2, '0')}</div>
+                            <div class="card-title">Question ${i}</div>
+                            <div class="card-actions">
+                                <a href="question${i}.html" class="btn btn-output">Live View</a>
+                                <a href="${githubLinks[i-1]}" target="_blank" class="btn btn-github">Source Code</a>
+                            </div>
+                        </div>
+                        `);
+                    }
+                </script>
+            </div>
+        </div>
+
+        <div class="category html-group">
+            <div class="category-header">
+                <span class="badge">HTML</span>
+                <span class="cat-title">Structure & Components (21-25)</span>
+            </div>
+            <div class="card-grid">
+                <script>
+                    for(let i=21; i<=25; i++) {
+                        document.write(`
+                        <div class="card">
+                            <div class="card-number">#${i.toString().padStart(2, '0')}</div>
+                            <div class="card-title">Question ${i}</div>
+                            <div class="card-actions">
+                                <a href="question${i}.html" class="btn btn-output">Live View</a>
+                                <a href="${githubLinks[i-1]}" target="_blank" class="btn btn-github">Source Code</a>
+                            </div>
+                        </div>
+                        `);
+                    }
+                </script>
+            </div>
+        </div>
+
+        <footer>
+            © 2025 Mohit Pandey | Webtech Submission
+        </footer>
+    </div>
+
+</body>
+</html>
